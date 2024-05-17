@@ -32,10 +32,10 @@ func main() {
 		panic("cant parse")
 	}
 
-	ord, ok := new(big.Int).SetString("3", 10)
-	if !ok {
-		panic("cant parse")
-	}
+	//ord, ok := new(big.Int).SetString("51", 10)
+	//if !ok {
+	//	panic("cant parse")
+	//}
 
 	c := ec.Curve{
 		A:   a,
@@ -43,17 +43,28 @@ func main() {
 		Mod: p,
 	}
 
-	point := ec.Point{
+	p1 := ec.Point3D{
+		X: x,
+		Y: y,
+		Z: big.NewInt(1),
+	}
+
+	p2 := ec.Point2D{
 		X: x,
 		Y: y,
 	}
 
-	for i := range 100 {
-		ord.SetInt64(int64(i + 1))
+	for i := range 10 {
+		ord := big.NewInt(int64(i + 1))
 
-		if !c.StupidScalarMulPoint(ord, point).IsEqual(c.SmartScalarMulPoint(ord, point)) {
-			fmt.Println(i)
+		r1 := c.SmartScalarMulPoint(ord, p1)
+		r1T := r1.(ec.Point3D)
+		r12D := r1T.To2D(&c)
+
+		r2 := c.SmartScalarMulPoint(ord, p2)
+
+		if !r2.IsEqual(r12D) {
+			fmt.Println(ord, r1, r12D, r2)
 		}
 	}
-
 }

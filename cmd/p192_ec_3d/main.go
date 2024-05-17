@@ -43,9 +43,10 @@ func main() {
 		Mod: p,
 	}
 
-	point := ec.Point2D{
+	point := ec.Point3D{
 		X: x,
 		Y: y,
+		Z: big.NewInt(1),
 	}
 
 	fmt.Println(c.SmartScalarMulPoint(ord, point))
