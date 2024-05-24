@@ -48,5 +48,5 @@ func main() {
 		Y: y,
 	}
 
-	fmt.Println(c.SmartScalarMulPoint(ord, point))
+	fmt.Println(c.ScalarMulPoint2D(ord, point))
 }

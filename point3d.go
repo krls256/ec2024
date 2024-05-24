@@ -8,6 +8,10 @@ type Point3D struct {
 	X, Y, Z *big.Int
 }
 
+func (p Point3D) Coords2D(c *Curve) (x, y *big.Int) {
+	return p.To2D(c).Coords2D(c)
+}
+
 // https://www.nayuki.io/page/elliptic-curve-point-addition-in-projective-coordinates
 func (p Point3D) Double(c *Curve) Point {
 	if p.IsInf() {

@@ -5,6 +5,7 @@ import (
 )
 
 type Point interface {
+	Coords2D(c *Curve) (x, y *big.Int)
 	Double(c *Curve) Point
 	Add(p Point, c *Curve) Point
 
@@ -23,10 +24,8 @@ var three = big.NewInt(3)
 var minusOne = big.NewInt(-1)
 var zero = big.NewInt(0)
 var one = big.NewInt(1)
-var eight = big.NewInt(8)
-var four = big.NewInt(4)
 
-func (c *Curve) SmartScalarMulPoint(k *big.Int, p Point) Point {
+func (c *Curve) ScalarMulPoint2D(k *big.Int, p Point) Point {
 	Q := p
 
 	for i := k.BitLen() - 2; i >= 0; i-- {
@@ -35,16 +34,6 @@ func (c *Curve) SmartScalarMulPoint(k *big.Int, p Point) Point {
 		if k.Bit(i) == 1 {
 			Q = c.Add(Q, p)
 		}
-	}
-
-	return Q
-}
-
-func (c *Curve) StupidScalarMulPoint(k *big.Int, p Point) Point {
-	Q := p
-
-	for i := int64(1); i < k.Int64(); i++ {
-		Q = c.Add(Q, p)
 	}
 
 	return Q

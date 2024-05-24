@@ -37,7 +37,7 @@ func main() {
 		panic("cant parse")
 	}
 
-	c := ec.Curve{
+	c := &ec.Curve{
 		A:   a,
 		B:   b,
 		Mod: p,
@@ -49,5 +49,12 @@ func main() {
 		Z: big.NewInt(1),
 	}
 
-	fmt.Println(c.ScalarMulPoint2D(ord, point))
+	text := []byte("lalalala")
+
+	alice := ec.NewDiffieHellman(c, point, ord)
+	bob := ec.NewDiffieHellman(c, point, ord)
+
+	r, s := alice.Sign(text)
+
+	fmt.Println(bob.Verify(text, r, s, alice.PublicKey()))
 }

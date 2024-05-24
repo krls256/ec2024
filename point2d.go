@@ -9,6 +9,10 @@ type Point2D struct {
 	X, Y *big.Int
 }
 
+func (p Point2D) Coords2D(c *Curve) (x, y *big.Int) {
+	return p.X, p.Y
+}
+
 func (p Point2D) Double(c *Curve) Point {
 	return double2d(p, c.A, c.Mod)
 }

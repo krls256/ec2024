@@ -100,7 +100,7 @@ func Test_2DCorrectness(t *testing.T) {
 		c := tc.Curve()
 		p := tc.Point2D()
 
-		pNext := c.SmartScalarMulPoint(tc.Ord, p)
+		pNext := c.ScalarMulPoint2D(tc.Ord, p)
 
 		require.True(t, pNext.IsInf())
 	}
@@ -111,7 +111,7 @@ func Test_3DCorrectness(t *testing.T) {
 		c := tc.Curve()
 		p := tc.Point3D()
 
-		pNext := c.SmartScalarMulPoint(tc.Ord, p)
+		pNext := c.ScalarMulPoint2D(tc.Ord, p)
 
 		require.True(t, pNext.IsInf())
 	}
@@ -123,7 +123,7 @@ func Benchmark_3D_192(b *testing.B) {
 	c := tc.Curve()
 	p := tc.Point3D()
 
-	c.SmartScalarMulPoint(tc.Ord, p)
+	c.ScalarMulPoint2D(tc.Ord, p)
 }
 
 func Benchmark_2D_192(b *testing.B) {
@@ -132,7 +132,7 @@ func Benchmark_2D_192(b *testing.B) {
 	c := tc.Curve()
 	p := tc.Point2D()
 
-	c.SmartScalarMulPoint(tc.Ord, p)
+	c.ScalarMulPoint2D(tc.Ord, p)
 }
 
 func Benchmark_3D_224(b *testing.B) {
@@ -141,7 +141,7 @@ func Benchmark_3D_224(b *testing.B) {
 	c := tc.Curve()
 	p := tc.Point3D()
 
-	c.SmartScalarMulPoint(tc.Ord, p)
+	c.ScalarMulPoint2D(tc.Ord, p)
 }
 
 func Benchmark_2D_224(b *testing.B) {
@@ -150,7 +150,7 @@ func Benchmark_2D_224(b *testing.B) {
 	c := tc.Curve()
 	p := tc.Point2D()
 
-	c.SmartScalarMulPoint(tc.Ord, p)
+	c.ScalarMulPoint2D(tc.Ord, p)
 }
 
 func Benchmark_3D_256(b *testing.B) {
@@ -159,7 +159,7 @@ func Benchmark_3D_256(b *testing.B) {
 	c := tc.Curve()
 	p := tc.Point3D()
 
-	c.SmartScalarMulPoint(tc.Ord, p)
+	c.ScalarMulPoint2D(tc.Ord, p)
 }
 
 func Benchmark_2D_256(b *testing.B) {
@@ -168,7 +168,7 @@ func Benchmark_2D_256(b *testing.B) {
 	c := tc.Curve()
 	p := tc.Point2D()
 
-	c.SmartScalarMulPoint(tc.Ord, p)
+	c.ScalarMulPoint2D(tc.Ord, p)
 }
 
 func Benchmark_3D_384(b *testing.B) {
@@ -177,7 +177,7 @@ func Benchmark_3D_384(b *testing.B) {
 	c := tc.Curve()
 	p := tc.Point3D()
 
-	c.SmartScalarMulPoint(tc.Ord, p)
+	c.ScalarMulPoint2D(tc.Ord, p)
 }
 
 func Benchmark_2D_384(b *testing.B) {
@@ -186,7 +186,7 @@ func Benchmark_2D_384(b *testing.B) {
 	c := tc.Curve()
 	p := tc.Point2D()
 
-	c.SmartScalarMulPoint(tc.Ord, p)
+	c.ScalarMulPoint2D(tc.Ord, p)
 }
 
 func Benchmark_3D_521(b *testing.B) {
@@ -195,7 +195,7 @@ func Benchmark_3D_521(b *testing.B) {
 	c := tc.Curve()
 	p := tc.Point3D()
 
-	c.SmartScalarMulPoint(tc.Ord, p)
+	c.ScalarMulPoint2D(tc.Ord, p)
 }
 
 func Benchmark_2D_521(b *testing.B) {
@@ -204,5 +204,5 @@ func Benchmark_2D_521(b *testing.B) {
 	c := tc.Curve()
 	p := tc.Point2D()
 
-	c.SmartScalarMulPoint(tc.Ord, p)
+	c.ScalarMulPoint2D(tc.Ord, p)
 }

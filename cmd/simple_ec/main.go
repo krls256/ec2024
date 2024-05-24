@@ -57,11 +57,11 @@ func main() {
 	for i := range 10 {
 		ord := big.NewInt(int64(i + 1))
 
-		r1 := c.SmartScalarMulPoint(ord, p1)
+		r1 := c.ScalarMulPoint2D(ord, p1)
 		r1T := r1.(ec.Point3D)
 		r12D := r1T.To2D(&c)
 
-		r2 := c.SmartScalarMulPoint(ord, p2)
+		r2 := c.ScalarMulPoint2D(ord, p2)
 
 		if !r2.IsEqual(r12D) {
 			fmt.Println(ord, r1, r12D, r2)
